@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -40,13 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll Reveal Animation (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal, .reveal-up, .reveal-left, .reveal-right');
-    
+
     const revealOptions = {
         threshold: 0.15,
         rootMargin: "0px 0px -50px 0px"
     };
 
-    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+    const revealOnScroll = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
                 return;
@@ -67,13 +67,13 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 // Adjust for fixed navbar height
                 const navHeight = document.getElementById('navbar').offsetHeight;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -81,30 +81,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
+
     // Active Navigation Link Update on Scroll
     const sections = document.querySelectorAll('section');
-    
+
     window.addEventListener('scroll', () => {
         let current = '';
         const navHeight = document.getElementById('navbar').offsetHeight;
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            
+
             if (scrollY >= (sectionTop - navHeight - 100)) {
                 current = section.getAttribute('id');
             }
         });
-        
+
         navItems.forEach(li => {
             li.classList.remove('active');
             if (current && li.getAttribute('href') === `#${current}`) {
                 li.classList.add('active');
             }
         });
-        
+
         // Handle home specifically
         if (window.scrollY < 100) {
             navItems.forEach(li => li.classList.remove('active'));
