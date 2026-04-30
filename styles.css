@@ -222,6 +222,13 @@ ul {
     align-items: center;
 }
 
+.logo-img {
+    height: 45px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: var(--radius-sm);
+}
+
 .logo-text {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
@@ -294,7 +301,8 @@ ul {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    background: linear-gradient(135deg, rgba(0, 33, 113, 0.85), rgba(13, 71, 161, 0.85)), url('picture.jpeg') center/cover;
+    background-attachment: fixed;
     overflow: hidden;
 }
 
